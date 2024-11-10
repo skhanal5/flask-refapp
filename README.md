@@ -1,7 +1,8 @@
-# Flask Reference App
+# VLEAGUE Backend
 
 ## About
-This is a reference API used to learn the Flask framework.
+This is a reference application used to learn about the Flask framework. It serves as the backend for VLEAGUE, 
+a Valorant fantasy game. 
 
 ## Development
 

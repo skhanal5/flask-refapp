@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "flask_refapp"
+name = "vleague_backend"
 version = "0.1.0"
 description = ""
 authors = ["Subodh Khanal <skhanal5@terpmail.umd.edu>"]
 readme = "README.md"
 packages = [
-    { include = "flask_refapp" },
+    { include = "vleague_backend" },
 ]
 
 [tool.poetry.dependencies]
