@@ -1,6 +1,6 @@
 from flask import Flask
 
-from vleague_backend.routes.valorant import valorant_bp
+from vleague_backend.routes.valorant_route import valorant_bp
 
 
 def create_app(test_config=None) -> Flask:

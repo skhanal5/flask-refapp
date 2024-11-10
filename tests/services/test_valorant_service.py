@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from vleague_backend.adapters.vlr_adapter import VLRAdapter
+from vleague_backend.adapters.valorant_adapter import VLRAdapter
 from vleague_backend.services.valorant_service import ValorantService
 
 
