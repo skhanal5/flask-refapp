@@ -2,7 +2,7 @@ import pytest
 from flask import Flask
 from flask.testing import FlaskClient
 
-from flask_refapp.app import create_app
+from vleague_backend.app import create_app
 
 
 @pytest.fixture()

@@ -3,7 +3,7 @@ from unittest.mock import patch
 import pytest
 from httpx import Client
 
-from flask_refapp.clients.http_client import HTTPClient
+from vleague_backend.clients.http_client import HTTPClient
 
 
 @pytest.fixture()

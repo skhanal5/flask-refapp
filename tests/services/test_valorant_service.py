@@ -1,13 +1,14 @@
+from typing import Generator
 from unittest.mock import MagicMock, patch
 
 import pytest
 
-from flask_refapp.adapters.vlr_adapter import VLRAdapter
-from flask_refapp.services.valorant_service import ValorantService
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
+from vleague_backend.services.valorant_service import ValorantService
 
 
 @pytest.fixture()
-def mock_adapter() -> MagicMock:
+def mock_adapter() -> Generator[MagicMock, None, None]:
     with patch(
         "flask_refapp.services.valorant_service.VLRAdapter.get_health_status"
     ) as mock_method:

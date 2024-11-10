@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from flask_refapp.services.valorant_service import ValorantService
+from vleague_backend.services.valorant_service import ValorantService
 
 valorant_bp = Blueprint("valorant", __name__, url_prefix="/valorant")
 

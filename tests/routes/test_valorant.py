@@ -1,3 +1,4 @@
+from typing import Generator
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -5,7 +6,7 @@ from flask.testing import FlaskClient
 
 
 @pytest.fixture()
-def mock_service() -> MagicMock:
+def mock_service() -> Generator[MagicMock, None, None]:
     with patch(
         "flask_refapp.services.valorant_service.ValorantService.get_health"
     ) as mock_method:

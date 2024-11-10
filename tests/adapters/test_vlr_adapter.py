@@ -1,13 +1,14 @@
+from typing import Generator
 from unittest.mock import patch, MagicMock
 
 import pytest
 
-from flask_refapp.adapters.vlr_adapter import VLRAdapter
-from flask_refapp.clients.http_client import HTTPClient
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
+from vleague_backend.clients.http_client import HTTPClient
 
 
 @pytest.fixture()
-def mock_client() -> MagicMock:
+def mock_client() -> Generator[MagicMock, None, None]:
     with patch(
         "flask_refapp.clients.http_client.HTTPClient.send_request"
     ) as mock_method:
