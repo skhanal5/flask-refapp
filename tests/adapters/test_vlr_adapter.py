@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock
 
 import pytest
 
-from vleague_backend.adapters.valorant_adapter import VLRAdapter
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
 from vleague_backend.clients.http_client import HTTPClient
 
 

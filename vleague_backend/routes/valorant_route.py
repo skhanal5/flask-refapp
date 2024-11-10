@@ -3,7 +3,7 @@ from functools import lru_cache
 from flask import Blueprint
 from flask_pydantic import validate
 
-from vleague_backend.adapters.valorant_adapter import VLRAdapter
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
 from vleague_backend.port.valorant_port import ValorantPort
 
 valorant_bp = Blueprint("valorant", __name__, url_prefix="/valorant")
