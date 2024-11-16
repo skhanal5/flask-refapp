@@ -1,3 +1,5 @@
+from typing import Any
+
 from pydantic import BaseModel
 
 
@@ -13,7 +15,7 @@ class AllTeamsResponse(BaseModel):
     status: str
     region: str
     size: int
-    pagination: dict[str, int]
+    pagination: dict[str, Any]
     data: list[GeneralTeamData]
 
 
@@ -73,12 +75,22 @@ class UpcomingMatches(BaseModel):
     team: list[MatchTeams]
 
 
+class DetailedEvents(BaseModel):
+    id: str
+    url: str
+    name: str
+    results: list[str]
+    year: str
+
+
 class DetailedTeamData(BaseModel):
     info: dict[str, str]
     players: list[TeamPlayer]
     staff: list[TeamStaff]
+    inactive: list[Any] = []
+    events: list[DetailedEvents]
     results: list[PreviousResults]
-    upcoming: list[UpcomingMatches]
+    upcoming: list[UpcomingMatches] = []
 
 
 class DetailedTeamResponse(BaseModel):
