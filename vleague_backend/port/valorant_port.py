@@ -3,7 +3,7 @@ from abc import ABC
 from functools import cached_property
 from typing import Any
 
-from vleague_backend.models.vlr_orl import (
+from vleague_backend.models.vlr_orl_api import (
     UpcomingMatches,
     PreviousResults,
 )
@@ -15,11 +15,11 @@ class ValorantPort(ABC):
         pass
 
     @abc.abstractmethod
-    def get_player(self, player: str) -> dict[str, Any]:
+    def get_player(self, player_name: str) -> dict[str, Any]:
         pass
 
     @abc.abstractmethod
-    def get_team(self, team: str) -> dict[str, Any]:
+    def get_team(self, team_id: str) -> dict[str, Any]:
         pass
 
     @abc.abstractmethod
@@ -28,9 +28,9 @@ class ValorantPort(ABC):
         pass
 
     @abc.abstractmethod
-    def get_upcoming_matches(self, team: str) -> list[UpcomingMatches]:
+    def get_upcoming_matches(self, team_id: str) -> list[UpcomingMatches]:
         pass
 
     @abc.abstractmethod
-    def get_previous_results(self, team: str) -> list[PreviousResults]:
+    def get_previous_results(self, team_id: str) -> list[PreviousResults]:
         pass

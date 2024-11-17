@@ -4,13 +4,14 @@ from unittest.mock import MagicMock, patch
 import pytest
 from flask.testing import FlaskClient
 
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
 from vleague_backend.routes.valorant_route import get_port
 
 
 class TestValorant:
     @pytest.fixture(scope="module")
     def mock_adapter(self) -> MagicMock:
-        mock_adapter = MagicMock()
+        mock_adapter = MagicMock(spec=VLRAdapter)
         mock_adapter.get_health.return_value = {}
         mock_adapter.get_team.return_value = {}
         mock_adapter.get_upcoming_matches.return_value = []

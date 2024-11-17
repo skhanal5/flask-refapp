@@ -60,7 +60,7 @@ class MatchTeams(BaseModel):
     name: str
     tag: str
     logo: str
-    points: str
+    points: str = None
 
 
 class PreviousResults(BaseModel):
@@ -72,7 +72,7 @@ class PreviousResults(BaseModel):
 class UpcomingMatches(BaseModel):
     match: Match
     event: Event
-    team: list[MatchTeams]
+    teams: list[MatchTeams]
 
 
 class DetailedEvents(BaseModel):
