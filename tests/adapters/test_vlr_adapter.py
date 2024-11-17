@@ -1,29 +1,43 @@
-from unittest.mock import patch, MagicMock
+import json
+from unittest.mock import patch
 
 import pytest
+from httpx import Response
 
-from flask_refapp.adapters.vlr_adapter import VLRAdapter
-from flask_refapp.clients.http_client import HTTPClient
-
-
-@pytest.fixture()
-def mock_client() -> MagicMock:
-    with patch(
-        "flask_refapp.clients.http_client.HTTPClient.send_request"
-    ) as mock_method:
-        mock_method.return_value = {"status": "healthy"}
-        yield mock_method
+from vleague_backend.adapters.vlr_adapter import VLRAdapter
+from vleague_backend.clients.http_client import HTTPClient
+from vleague_backend.models.vlr_gg_api import DetailedPlayerStats
 
 
-def test_adapter_initialization():
-    adapter = VLRAdapter()
-    assert adapter._client is not None
-    assert isinstance(adapter._client, HTTPClient)
-    assert adapter._default_headers == {"Content-Type": "application/json"}
+def construct_response(content: str) -> Response:
+    return Response(status_code=200, content=content)
 
 
-def test_get_health_status(mock_client):
-    adapter = VLRAdapter()
-    result = adapter.get_health_status()
-    assert result == {"status": "healthy"}
-    mock_client.assert_called_once()
+class TestVLRAdapter:
+    @pytest.fixture()
+    def adapter(self) -> VLRAdapter:
+        return VLRAdapter()
+
+    def test_adapter_initialization(self, adapter: VLRAdapter):
+        assert adapter._client is not None
+        assert isinstance(adapter._client, HTTPClient)
+
+    def test_get_health_status(self, adapter: VLRAdapter):
+        expected_response = '{"foo": "bar"}'
+
+        with patch.object(adapter, "_client") as mock_client:
+            mock_client.send_request.return_value = construct_response(
+                expected_response
+            )
+            actual_response = json.dumps(adapter.get_health())
+            assert actual_response == expected_response
+
+    def test_get_player(self, adapter: VLRAdapter):
+        expected_response = DetailedPlayerStats(data=None).model_dump_json()
+
+        with patch.object(adapter, "_client") as mock_client:
+            mock_client.send_request.return_value = construct_response(
+                expected_response
+            )
+            actual_response = json.dumps(adapter.get_health())
+            assert actual_response == expected_response

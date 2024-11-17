@@ -1,4 +1,4 @@
-from flask_refapp.app import create_app
+from vleague_backend.app import create_app
 
 app = create_app()
 
